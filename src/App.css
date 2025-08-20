@@ -1,0 +1,58 @@
+#root {
+  flex:1;
+  display: flex;
+  flex-direction: column;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+}
+
+.Seccion{
+  display: flex;
+  flex:1;
+  flex-direction: row;
+}
+
+.Formulario{
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.FormContenedor{
+  display: flex;
+  flex-direction: column;
+  /*height: 80%;*/
+  margin:10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 15px;
+  align-items: center;
+}
+
+.FormContenedor input{
+  margin: 10px 0;
+}
+
+.Listado{
+  display: flex;
+  flex: 3;
+  flex-direction: row;
+  max-height: 50vh;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+}
+
+.Tarjeta{
+  margin:10px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
