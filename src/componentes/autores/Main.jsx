@@ -1,27 +1,59 @@
+import axios from 'axios';
 import FormularioAutores from './Formulario';
 import ListadoAutores from './Listado';
-
-const autoresEjemplo = [
-  {_id:1, nombre:"ejemplo1", apellido:"ejemplo1"},
-  {_id:2, nombre:"ejemplo2", apellido:"ejemplo2"},
-  {_id:3, nombre:"ejemplo3", apellido:"ejemplo3"},
-  {_id:4, nombre:"ejemplo4", apellido:"ejemplo4"},
-  {_id:3, nombre:"ejemplo3", apellido:"ejemplo3"},
-  {_id:4, nombre:"ejemplo4", apellido:"ejemplo4"},
-  {_id:3, nombre:"ejemplo3", apellido:"ejemplo3"},
-  {_id:4, nombre:"ejemplo4", apellido:"ejemplo4"},
-  {_id:3, nombre:"ejemplo3", apellido:"ejemplo3"},
-  {_id:4, nombre:"ejemplo4", apellido:"ejemplo4"},
-]
+import { useEffect, useState } from 'react';
 
 export default function Autores(){
+  const [autores, setAutores] = useState([])
 
   const eliminar = (autor_id) =>{
-    
+    const url = `https://api-libros.ctpoba.edu.ar/v1/autores/${autor_id}`;
+    const config = {
+      headers: { authorization: "123456" }
+    }
+
+    axios.delete(url, config)
+    .then((resp) => {
+      console.log(resp.data);
+      obtenerAutores();
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+
   }
   const guardar = (datos) =>{
-    
+    const url = "https://api-libros.ctpoba.edu.ar/v1/autores/";
+
+    const config = {
+      headers: { authorization:"123456"}
+    }
+
+    axios.post(url, datos, config)
+    .then((resp) => {
+      console.log(resp.data);
+      obtenerAutores();
+    })
+    .catch((error) => {
+      console.error(error);
+    })
   }
+
+  const obtenerAutores = () =>{
+    const url = "https://api-libros.ctpoba.edu.ar/v1/autores/";
+    axios.get(url)
+      .then((resp) => {
+        console.log(resp.data.autores);
+        setAutores(resp.data.autores)
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+  }
+
+  useEffect(() => {
+    obtenerAutores
+  },[])
 
   return(
     <div 
@@ -29,10 +61,10 @@ export default function Autores(){
       style={{backgroundColor:'darkgrey'}}
     >
       <FormularioAutores 
-        guardar={(datos) => guardar(datos)}
+        guardarAutores={(datos) => guardar(datos)}
       />
       <ListadoAutores 
-        autores={autoresEjemplo}
+        autores={autores}
         eliminar={(autor_id) => eliminar(autor_id)}
       />
     </div>

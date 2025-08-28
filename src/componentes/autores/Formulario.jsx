@@ -1,11 +1,16 @@
 import { useState } from "react"
 
-export default function FormularioAutores(){
-  const [nombres, setNombres] = useState("");
-  const [apellidos, setApellidos] = useState("");
+export default function FormularioAutores({guardarAutores}){
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
 
   const guardar = (e) => {
     e.preventDefault();
+    const autores = {
+      nombre,
+      apellido
+    }
+    guardarAutores(autores);
   }
 
   return (
@@ -16,13 +21,13 @@ export default function FormularioAutores(){
       >
         <input 
           placeholder="Nombres" 
-          type="text" value={nombres}
-          onChange={(e) => setNombres(e.target.value)}
+          type="text" value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
         />
         <input 
           placeholder="Apellidos" 
-          type="text" value={apellidos}
-          onChange={(e) => setApellidos(e.target.value)}
+          type="text" value={apellido}
+          onChange={(e) => setApellido(e.target.value)}
         />
         <button type="submit">Guardar</button>
       </form>

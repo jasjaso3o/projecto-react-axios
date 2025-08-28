@@ -46,6 +46,7 @@
   max-height: 50vh;
   overflow-y: scroll;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .Tarjeta{
@@ -55,4 +56,38 @@
   background-color: white;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.Tarjeta .Eliminar {
+  padding: 0 6px;
+  background-color: red;
+  postion: absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 50%;
+  curser: pointer;
+  color: white;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100px;
+  background-color: deepskyblue;
+  align-items: flex-start;
+  justify-content: center;
+
+}
+
+.Header .Boton {
+  padding: 10px 20px;
+  margin: 0 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.5);
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
 }
