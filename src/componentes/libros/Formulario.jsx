@@ -13,7 +13,7 @@ export default function FormularioLibros({autores, guardarLibro}){
   const [isbn, setIsbn] = useState("")
   const [generos, setGeneros] = useState("")
   const [sinopsis, setSinopsis] = useState("")
-  const [autor_id, setAutorId] = useState("")
+  const [autores_id, setAutoresId] = useState("")
 
   const guardar = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ export default function FormularioLibros({autores, guardarLibro}){
       isbn,
       generos,
       sinopsis,
-      autor_id
+      autores_id
     }
     guardarLibro(libro);
   }
@@ -50,13 +50,13 @@ export default function FormularioLibros({autores, guardarLibro}){
           type="text" placeholder="sinopsis"
         />
         <select
-          value={autor_id} onChange={(e) => setAutorId(e.target.value)}
+          value={autores_id} onChange={(e) => setAutoresId(e.target.value)}
         >
           {autores.map((autores, index) => 
             <option 
-              key={autor._id}
-              value={autor._id}
-            >{autor.apellido}, {autor.nombre}</option>
+              key={autores._id}
+              value={autores._id}
+            >{autores.apellido}, {autores.nombre}</option>
           )}
         </select>
         <button type="submit">Guardar</button>

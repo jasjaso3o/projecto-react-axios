@@ -22,14 +22,14 @@ export default function Autores(){
     })
 
   }
-  const guardar = (datos) =>{
+    const guardar = (autores) =>{
     const url = "https://api-libros.ctpoba.edu.ar/v1/autores/";
 
     const config = {
       headers: { authorization:"123456"}
     }
 
-    axios.post(url, datos, config)
+    axios.post(url, autores, config)
     .then((resp) => {
       console.log(resp.data);
       obtenerAutores();
@@ -52,7 +52,7 @@ export default function Autores(){
   }
 
   useEffect(() => {
-    obtenerAutores
+    obtenerAutores()
   },[])
 
   return(
@@ -61,7 +61,7 @@ export default function Autores(){
       style={{backgroundColor:'darkgrey'}}
     >
       <FormularioAutores 
-        guardarAutores={(datos) => guardar(datos)}
+        guardarAutores={(autores) => guardar(autores)}
       />
       <ListadoAutores 
         autores={autores}
